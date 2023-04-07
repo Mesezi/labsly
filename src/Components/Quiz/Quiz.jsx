@@ -45,7 +45,7 @@ const Quiz = ({setShowModal, setModalMessage}) => {
 
         let userRef = doc(database, "users", userData.uid);
 
-        if( userData.highscore > currentScore){
+        if(currentScore > userData.highscore){
           try{
             await updateDoc(userRef, {highscores: currentScore});  
          }
