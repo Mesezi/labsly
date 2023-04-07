@@ -1,0 +1,37 @@
+.messageForm input{
+outline:0;
+border:0;
+background-color: rgb(61, 61, 61);
+color: white;
+}
+
+.chat-bubble{
+    display: flex;
+    width: 100%;
+    gap: 1rem;
+    margin: 1rem 0;
+    background-color: var(--secondary);
+    padding: .5rem .5rem; 
+    width: max-content;
+    max-width: 30rem;
+    border-radius: 10px;
+    align-items: center;
+}
+
+.chat-bubble.right{
+    justify-content: flex-end;
+    margin-left: auto;
+    background-color: rgb(0, 0, 0,.4);
+    flex-direction: row-reverse;
+}
+
+.chat-bubble img{
+    height: 2.1rem;
+    width: 2.1rem;
+    border-radius: 50%;
+    background-color: white
+}
+/* 
+.chat-bubble .user-name{
+    color: var(--theme)
+} */

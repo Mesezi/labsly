@@ -1,0 +1,29 @@
+@import '../../index.css';
+
+
+
+.register{
+    background-color: rgba(0,0,0,.9);
+}
+
+.register form input{
+    border:1px solid rgba(0,0,0,.2);
+    padding: .5rem;
+    outline: 0;
+    transition: border ease-in-out 200ms;
+}
+
+.register form input:focus{
+    border: 1px solid rgba(0,0,0,.9);
+}
+
+/* .register form input:visited{
+    background-color: red;
+} */
+
+/* 
+.register form article{
+    display: grid;
+    grid-template-columns: 5rem 1fr;
+    align-items: end;
+} */

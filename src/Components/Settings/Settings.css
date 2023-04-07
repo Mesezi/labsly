@@ -1,0 +1,101 @@
+.settings h3{
+    font-size: 2rem;
+    font-weight: 600;
+    color: var(--theme);
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    border-bottom: 2px solid var(--secondary);
+}
+
+.settings form{
+    display: flex;
+    flex-direction: column;
+    gap: .7rem;
+}
+
+.settings form > div{
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+    align-items: start;
+    width: 100%;
+}
+
+.settings form label{
+    font-size: 1rem;
+    font-weight: 600;
+    padding: .3rem 0;
+    color: var(--theme);
+    /* border-bottom: 2px solid var(--theme) ; */
+    white-space: nowrap;
+}
+
+.settings form input{
+    background-color: rgb(0, 0, 0,.5);
+    padding: .5rem .8rem;
+    outline: none;
+    font-size: 1.1rem;
+    width: 100%;
+    flex-grow: 1;
+}
+
+.settings .clear{
+    background-color: darkred;
+    font-weight: 500;
+    padding: .5rem 1.5rem;
+}
+
+.settings .more{
+    text-decoration: var(--theme) underline;
+    cursor: pointer;
+}
+
+.password-input{
+    color: black;
+    padding: .3rem;
+    outline: none;
+    border: none;
+}
+
+
+button.password-btn{
+    background-color: var(--theme);
+    align-self: center;
+    width: 100%;
+    padding: .5rem;
+    max-width: 12rem;
+    color: white;
+    font-weight: 600;
+    margin-top: 1.3rem;
+}
+
+.confirm-btn{
+    margin-top: 20px;
+}
+
+
+.confirm-btn #yes{
+    border: 2px solid var(--secondary);
+    padding: .3rem 1rem;
+    border-radius: .5rem;
+    width: 8rem
+}
+
+.confirm-btn #no{
+    background-color: var(--theme);
+    border: 2px solid var(--theme);
+    border-radius: .5rem;
+    width: 8rem
+}
+
+
+@media(min-width: 640px){
+    .settings form > div{
+        display: flex;
+        flex-direction: row;
+        gap: 2rem;
+        align-items: flex-end;
+    }
+  
+  }

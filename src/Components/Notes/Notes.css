@@ -1,0 +1,122 @@
+.notes-page h3{
+font-weight: 600;
+font-size: 2rem;
+color: var(--theme);
+display: flex;
+align-items: center;
+gap: 1rem;
+}
+
+.notes-page .header{
+    border-bottom: 2px solid var(--secondary);
+    padding: .3rem 0;
+}
+
+ .note-btn {
+    display: flex;
+    gap: .5rem;
+    padding: .6rem .7rem;
+    border-radius: 9px;
+    font-size: .9rem;
+    background-color: var(--theme);
+    color: white;
+}
+
+
+.add-btn{
+    padding: .5rem 1rem;
+    background-color: var(--theme);
+    color: black;
+    border-radius: 9px;
+    width: fit-content;
+    font-weight: 600;
+    margin-left: auto;
+}
+
+.notes-page form{
+    /* border-left: solid var(--secondary) 2px; */
+    padding: 1rem;
+}
+
+.notes-page input, .notes-page textarea{
+    padding: .5rem 0;
+    flex-grow: 1;
+    background-color: rgb(0, 0, 0, 0);
+    outline: none;
+}
+
+.notes{
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+}
+
+.note-item{
+    border: 2px solid var(--secondary);
+    border-radius: 8px;
+    cursor: pointer;
+    /* box-shadow: 0px 5px 10px rgb(0, 0, 0, .2); */
+}
+
+.note-item:hover{
+    background-color: var(--secondary);
+}
+
+.note-text{
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    font-size: .9rem;
+    line-height: 1rem;
+    color: gray;
+}
+
+.note-item svg{
+    height: 1.3rem;
+    color: var(--theme);
+    width: 1.3rem;
+}
+
+.preview-box {
+    padding: 1rem 1rem 1rem 0;
+}
+
+.preview-box article{
+    /* background-color: rgb(0, 0, 0, .2); */
+    padding: 1rem;
+    height: 100%;
+}
+
+.preview-box h2{
+    color: var(--theme);
+}
+
+.preview-box p{
+    color: rgb(243, 243, 243);
+}
+
+
+@media(min-width: 640px){
+    .notes{
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .notes-page input, .notes-page textarea{
+        padding: .5rem 1rem;
+        background-color: rgb(0, 0, 0, 0.2);
+    }
+    
+}
+
+@media(min-width: 1024px){
+    .notes{
+        grid-template-columns: 1fr 1fr 1fr;
+    }
+}
+
+
+
+
+
+

@@ -1,0 +1,122 @@
+.start-quiz{
+    background-color: var(--theme);
+}
+
+.quiz h3{
+    font-family: 'Space Grotesk';
+    color: var(--theme);
+    font-size: 3rem;
+    font-weight: 700;
+}
+
+.options > div{
+    padding: .5rem;
+    display: flex;
+    justify-content: center;
+}
+
+.option{
+    border: 1px solid var(--theme);
+    width: 100%;
+    padding: 1rem;
+    transition: all ease-in-out 200ms;
+    font-size: 1.2rem;
+}
+
+.option:hover{
+    background-color: var(--theme);
+}
+
+.option:focus{
+    background-color: var(--theme);
+}
+
+.current-score{
+    height: 4rem;
+    width: 4rem;
+    /* background-color: var(--secondary) ; */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: solid 5px var(--theme);
+    color: var(--theme);
+    font-weight: 500;
+}
+
+.current-score span{
+font-size: 1.4rem;
+}
+
+.health{
+    display: flex;
+    gap: .2rem;
+    height: 2.5rem;
+}
+
+.health span{
+    background-color: var(--theme);
+    width: .6rem;
+}
+
+.blob{
+    position: relative;
+    height: 15rem;
+  }
+  
+  
+  .blob > *{
+    position: absolute;
+    height: 100%;
+    object-fit: cover;
+    left: 50%;
+    -ms-transform: translateX(-50%);
+    transform: translateX(-50%);
+  }
+
+  .userScore{
+    background-color: var(--secondary);
+  }
+
+  .rank-modal h2{
+    text-align: center;
+    font-size: 2rem;
+    color: var(--theme);
+    font-weight: 600;
+  }
+
+
+  .leaderboard > div{
+    display: grid;
+    grid-template-columns: 5% auto 1fr 10%;
+    gap: 1rem;
+    padding: .5rem 0;
+    align-items: center;
+    border-bottom: 2px solid var(--secondary);
+    text-align: center;
+  }
+
+  .leaderboard img{
+    height: 2.5rem;
+    width: 2.5rem;
+    background-color: white;
+    border-radius: 50%;
+  }
+
+  .timer svg {
+    color : var(--theme)
+  }
+
+  .blob-color{
+    fill: var(--theme);
+  }
+
+
+  
+@media(min-width: 640px){
+
+    .blob{
+  height: 20rem;
+}
+  
+  }
