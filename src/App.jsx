@@ -44,7 +44,7 @@ setGreeting(text)
     },
     {
       path:'/dictionary',
-      element: <Dictionary word={'book'}/>
+      element: <Dictionary/>
     },
     {
       path:'/notes',
@@ -86,7 +86,7 @@ setGreeting(text)
 },
 {
   path:'login',
-  element: <Login/>
+  element: <Login setShowModal={setShowModal} setModalMessage={setModalMessage}/>
 },
 {
   path:'register',

@@ -8,7 +8,7 @@ import { useLocation, useParams } from 'react-router-dom'
 
 
 
-const Dictionary = ({word}) => {
+const Dictionary = () => {
   const {userData, auth} =  useAuth();
   const [searchData, setSearchData] = useState(null)
   const [wordOfday, setWordOfday] = useState(null)
@@ -21,6 +21,7 @@ const Dictionary = ({word}) => {
    
 
 useEffect(()=>{
+  console.log(location.state)
   location.state && antSynSearch(location.state.keyword)
   }, [location])
 
@@ -28,6 +29,7 @@ useEffect(()=>{
 
   useEffect(()=>{
 
+    if(!location.state){
   async function searchWordofDay(){
 
     var today = new Date();
@@ -35,6 +37,10 @@ var year = today.getFullYear();
 var month = today.getMonth()+1;
 var day = today.getDate();
 var date =year+"-"+month+"-"+day;
+
+
+  
+
 
 setSearchData('loading')
 
@@ -54,7 +60,7 @@ setSearchData('loading')
 
       else{
         setSearchData(wordDetailsRes[0])
-        setWordOfday(fallBackRes[0].word)
+        setWordOfday('impact')
       }
       
     }
@@ -62,7 +68,9 @@ setSearchData('loading')
   }
   searchWordofDay()
 
-  }, [word])
+}
+
+  }, [])
 
 
 
@@ -203,7 +211,7 @@ setSearchData('loading')
 <div>
   <p className='text-xl text-center mt-10 max-w-2xl mx-auto'>
   {searchData.message } {searchData.resolution}</p>
-  <p onClick={()=>setSearchData(wordOfday)} className='text-center mt-5 cursor-pointer'>Back</p>
+  <p onClick={()=>antSynSearch(wordOfday)} className='text-center mt-5 cursor-pointer'>Back</p>
   </div> 
    :
    <section>

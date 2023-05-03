@@ -3,17 +3,18 @@ import './Login.css'
 import { Link, useNavigate } from 'react-router-dom'
 import { Eye, EyeSlash } from 'iconsax-react'
 import { useForm } from 'react-hook-form'
-import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
+import { getAuth, signInWithEmailAndPassword, GoogleAuthProvider, signInWithPopup, signOut, sendPasswordResetEmail } from "firebase/auth";
 import { useAuth } from '../authContext'
 
 
 
-const Login = () => {
+const Login = ({setShowModal, setModalMessage}) => {
   const navigate = useNavigate()
   let {auth, currentUser} = useAuth()
   let googleProvider = new GoogleAuthProvider()
   const [showPassword, setShowPassword] = useState(false)
   const [loginError, setLoginError] = useState('')
+  const [forgotEmail, setForgotEmail] = useState('')
   const [isloading, setIsloading] = useState (false)
 
   useEffect(()=>{
@@ -59,6 +60,55 @@ const signOutUser = ()=>{
   });
 }
 
+const forgotPassword = () => {
+
+  function reset(e){
+    e.preventDefault()
+console.log(forgotEmail)
+    // setModalMessage(<div className="lds-ellipsis"><div></div><div></div><div></div><div></div></div>)
+
+sendPasswordResetEmail(auth, forgotEmail).then(() => {
+    // 
+    // ..
+    setModalMessage(
+    <> 
+    <p className='text-center'>Password reset email sent!<br />(check spam)</p>
+    <p className=' text-sm text-center block text-gray-300 mt-10 cursor-pointer' onClick={()=>setShowModal(false)}>Close</p>
+    </>
+   )
+  })
+  .catch((error) => {
+    const errorCode = error.code;
+    const errorMessage = error.message;
+    console.log(errorCode, errorMessage)
+    alert('No user found with this email, try again')
+    
+
+    // ..
+  });
+
+   
+    }
+
+
+  setShowModal(true)
+  setModalMessage(
+  
+  <>
+  <form onSubmit={(e)=>reset(e)} className='flex flex-col gap-2 w-[80vw] max-w-[400px] mx-auto'>
+    <label className='text-md'>Enter email</label>
+    <input type="email" onChange={(e)=>setForgotEmail(e.target.value)} name="" id="" className='border-0 px-2 py-1 outline-none text-black'/>
+    <button className='text-sm p-2 bg-zinc-800 ease-in duration-200'>Reset</button>
+  </form>
+
+  <p className=' text-sm text-center block text-gray-300 mt-10 cursor-pointer' onClick={()=>setShowModal(false)}>Close</p>
+
+  </>)
+
+
+
+}
+
   return (
     <main className='h-screen w-full flex justify-center items-center login text-black'>
         <article className='flex flex-col md:flex-row shadow-xl md:rounded-2xl overflow-hidden h-full md:h-[90%] container mx-auto'>
@@ -85,7 +135,7 @@ const signOutUser = ()=>{
             </div>
           </article>
           <div>
-          <p className='text-end text-sm'>Forgot password?</p>
+          <p className='text-end text-sm cursor-pointer' onClick={forgotPassword}>Forgot password?</p>
           <p className='text-red-600 text-sm mt-2'>{loginError}</p>
           </div>
           
@@ -97,16 +147,14 @@ const signOutUser = ()=>{
          :<button className='py-2 w-[8rem] bg-black/90 text-white rounded-full'>Sign in</button>}
             </div>
 
-          <article className='flex justify-center mt-4 items-center gap-2'><hr /><span>or</span> <hr /></article>
+          {/* <article className='flex justify-center mt-4 items-center gap-2'><hr /><span>or</span> <hr /></article>
 
           <p className='flex items-center justify-center gap-2' onClick={googleSignIn}>
-             <img src="https://cdn.freebiesupply.com/logos/large/2x/google-g-2015-logo-png-transparent.png" className='h-4' alt="" /> Sign in with Google</p>
+             <img src="https://cdn.freebiesupply.com/logos/large/2x/google-g-2015-logo-png-transparent.png" className='h-4' alt="" /> Sign in with Google</p> */}
 
           <p className='text-sm'>New to Labsly? <Link to="/register" className='underline decoration-solid'>Create Account</Link></p>
           </form>
 
-{/*           
-          <p onClick={signOutUser}>log out</p> */}
         </div>
     </article>
     </main>
