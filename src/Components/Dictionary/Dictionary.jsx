@@ -60,7 +60,7 @@ setSearchData('loading')
 
       else{
         setSearchData(wordDetailsRes[0])
-        setWordOfday('impact')
+        setWordOfday(wordDetailsRes[0].word)
       }
       
     }
