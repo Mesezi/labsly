@@ -17,6 +17,8 @@ import Preview from './Components/Notes/Preview'
 import Editor from './Components/Notes/Editor'
 import { useAuth } from './Components/authContext'
 import ModalStyled from './Modal'
+import { setPersistence, browserSessionPersistence, signInWithEmailAndPassword } from "firebase/auth";
+import { auth } from './fireBaseConfig'
 
 
 function App() {
@@ -25,6 +27,20 @@ function App() {
   const date = new Date()
   const [modalMessage, setModalMessage]  = useState(null)
   const [showModal, setShowModal] = useState(false)
+
+      // signs user out after brwoser tab or window is closed 
+setPersistence(auth, browserSessionPersistence)
+.then(() => {
+  // Existing and future Auth states are now persisted in the current
+  // session only. Closing the window would clear any existing state even
+  // if a user forgets to sign out.
+  // ...
+  // New sign-in will be persisted with session persistence.
+  return signInWithEmailAndPassword(auth, email, password);
+})
+.catch((error) => {
+  
+});
 
   useEffect(()=>{
       const hour = date.getHours()

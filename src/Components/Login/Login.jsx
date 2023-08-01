@@ -45,6 +45,22 @@ if(currentUser){
     }
 }
 
+const loginGuest = async (data) =>{
+  setLoginError('')
+  setIsloading(true)
+
+  try {
+  await signInWithEmailAndPassword(auth, 'guest@gmail.com', 'guestmode1')
+  }
+
+  catch(err){
+    console.log(err.message)
+    setLoginError('Email and password do not match')
+    setIsloading(false)  
+  }
+}
+
+
 const googleSignIn = () =>{
   signInWithPopup(auth, googleProvider).then(res=>console.log(res.user))
   .catch(err=>alert(err.message))
@@ -145,6 +161,13 @@ sendPasswordResetEmail(auth, forgotEmail).then(() => {
           <div className=' mt-5'>
          {isloading ? <button disabled={isloading} className='py-2 w-[8rem] bg-black/90 text-white rounded-full'>Loading...</button> 
          :<button className='py-2 w-[8rem] bg-black/90 text-white rounded-full'>Sign in</button>}
+            </div>
+
+           <div className='flex justify-center'>
+         <p onClick={loginGuest} disabled={isloading} className='py-2 cursor-pointer w-[8rem] underline 
+         text-black text-xl font-bold disabled:opacity-30'>
+        Guest
+          </p>
             </div>
 
           {/* <article className='flex justify-center mt-4 items-center gap-2'><hr /><span>or</span> <hr /></article>

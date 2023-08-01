@@ -16,7 +16,6 @@ function wordHyperLink(arr){
    return searchItems
  }
 
- console.log(rankData)
 
  
 
